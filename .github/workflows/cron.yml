@@ -1,0 +1,16 @@
+name: Run Every Hour
+
+on:
+  schedule:
+    - cron: "0 * * * *"  # 每小时运行一次（UTC时间）
+  workflow_dispatch:     # 允许手动触发
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Run your script
+        run: |
+          python run.py
