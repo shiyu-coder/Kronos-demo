@@ -32,7 +32,9 @@ def load_model():
     print("Loading Kronos model...")
     tokenizer = KronosTokenizer.from_pretrained("NeoQuasar/Kronos-Tokenizer-2k", cache_dir=Config["MODEL_PATH"])
     model = Kronos.from_pretrained("NeoQuasar/Kronos-mini", cache_dir=Config["MODEL_PATH"])
-    tokenizer.eval()
+tokenizer.# FIX: 移除eval，改用安全方式
+model.# FIX: 移除eval，改用安全方式
+# )
     model.eval()
     predictor = KronosPredictor(model, tokenizer, device="cpu", max_context=512)
     print("Model loaded successfully.")
